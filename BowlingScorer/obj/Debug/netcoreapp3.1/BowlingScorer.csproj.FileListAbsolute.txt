@@ -1,0 +1,8 @@
+C:\Development\katachallenges\Bowling\BowlingScorer\bin\Debug\netcoreapp3.1\BowlingScorer.deps.json
+C:\Development\katachallenges\Bowling\BowlingScorer\bin\Debug\netcoreapp3.1\BowlingScorer.dll
+C:\Development\katachallenges\Bowling\BowlingScorer\bin\Debug\netcoreapp3.1\BowlingScorer.pdb
+C:\Development\katachallenges\Bowling\BowlingScorer\obj\Debug\netcoreapp3.1\BowlingScorer.AssemblyInfoInputs.cache
+C:\Development\katachallenges\Bowling\BowlingScorer\obj\Debug\netcoreapp3.1\BowlingScorer.AssemblyInfo.cs
+C:\Development\katachallenges\Bowling\BowlingScorer\obj\Debug\netcoreapp3.1\BowlingScorer.csproj.CoreCompileInputs.cache
+C:\Development\katachallenges\Bowling\BowlingScorer\obj\Debug\netcoreapp3.1\BowlingScorer.dll
+C:\Development\katachallenges\Bowling\BowlingScorer\obj\Debug\netcoreapp3.1\BowlingScorer.pdb
