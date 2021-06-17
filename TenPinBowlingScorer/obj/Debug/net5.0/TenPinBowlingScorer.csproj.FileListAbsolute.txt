@@ -1,0 +1,11 @@
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\bin\Debug\net5.0\TenPinBowlingScorer.deps.json
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\bin\Debug\net5.0\TenPinBowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\bin\Debug\net5.0\ref\TenPinBowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\bin\Debug\net5.0\TenPinBowlingScorer.pdb
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.AssemblyInfoInputs.cache
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.AssemblyInfo.cs
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.csproj.CoreCompileInputs.cache
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\ref\TenPinBowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\TenPinBowlingScorer\obj\Debug\net5.0\TenPinBowlingScorer.pdb

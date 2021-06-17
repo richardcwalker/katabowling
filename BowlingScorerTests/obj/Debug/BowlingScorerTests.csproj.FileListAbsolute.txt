@@ -1,0 +1,16 @@
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\BowlingScorerTests.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\BowlingScorerTests.pdb
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\obj\Debug\BowlingScorerTests.csproj.AssemblyReference.cache
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\obj\Debug\BowlingScorerTests.csproj.CoreCompileInputs.cache
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\obj\Debug\BowlingScorerTests.csproj.CopyComplete
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\obj\Debug\BowlingScorerTests.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\obj\Debug\BowlingScorerTests.pdb
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\BowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorerTests\bin\Debug\BowlingScorer.pdb

@@ -1,0 +1,5 @@
+C:\Development\katachallenges\TenPinBowling\BowlingScorer\bin\Debug\BowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorer\bin\Debug\BowlingScorer.pdb
+C:\Development\katachallenges\TenPinBowling\BowlingScorer\obj\Debug\BowlingScorer.csproj.CoreCompileInputs.cache
+C:\Development\katachallenges\TenPinBowling\BowlingScorer\obj\Debug\BowlingScorer.dll
+C:\Development\katachallenges\TenPinBowling\BowlingScorer\obj\Debug\BowlingScorer.pdb
