@@ -8,7 +8,7 @@ namespace BowlingScorerTests
         /// <summary>
         // The game consists of 10 frames.
 
-        // In each frame the player has two rolls to knock down 10 pins.
+        // In each frame the player has two rolls to knock down 10 pins. (20 rolls in total)
 
         // The score for the frame is the total number of pins knocked down,
         // plus bonuses for strikes and spares.
@@ -17,7 +17,6 @@ namespace BowlingScorerTests
         // The bonus for that frame is the number of pins knocked down by the next roll.
         //
         // A strike is when the player knocks down all 10 pins on his first roll.
-        //
         // The frame is then completed with a single roll.
         //
         // The bonus for that frame is the value of the next two rolls.
@@ -32,28 +31,7 @@ namespace BowlingScorerTests
         {
         }
 
-        [Test]
-        public void PlayerHasTwoGoesFirstFrame()
-        {
-            Game _newGame = new Game();
-            //First Roll
-            _newGame.Roll(5);
-            //Second Roll
-            _newGame.Roll(2);
-            Assert.IsTrue(_newGame.PlayerRoll == 2);
-        }
-
-        [Test]
-        public void PlayerHasTwoGoesCheckScoreIsSeven()
-        {
-            Game _newGame = new Game();
-            //First Roll
-            _newGame.Roll(5);
-            //Second Roll
-            _newGame.Roll(2);
-            Assert.That(_newGame.Score, Is.EqualTo(7));
-        }
-
+        //Strike on first roll
         [Test]
         public void PlayerScoresStrikeFirstRoll()
         {

@@ -16,20 +16,20 @@ namespace BowlingScorer
         }
         public void Roll(int PinsKnockedDown)
         {
-            PlayerRoll++;
+            //PlayerRoll++;
 
-            if(PinsKnockedDown == 10)
-            {
-                IsStrike = true;
-                IsframeFinished = true;
-            }
+            //if(PinsKnockedDown == 10)
+            //{
+            //    IsStrike = true;
+            //    IsframeFinished = true;
+            //}
 
-            RunningScore = RunningScore + PinsKnockedDown;
+            //RunningScore = RunningScore + PinsKnockedDown;
             
-            if (PlayerRoll == 2)
-            {
-                Frame++;
-            }       
+            //if (PlayerRoll == 2)
+            //{
+            //    Frame++;
+            //}       
         }
     }
 }
