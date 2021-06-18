@@ -7,29 +7,31 @@ namespace BowlingScorer
         private int RunningScore;
         public int Frame = 0;
         public int PlayerRoll = 0;
-        public bool IsframeFinished = false;
+        public bool IsFrameFinished = false;
         public bool IsStrike = false;
 
         public int Score()
         {
             return RunningScore;
         }
+        /// <summary>
+        /// Passes in the number of pins knocked down when a roll is made 
+        /// by a player.
+        /// </summary>
+        /// <param name="PinsKnockedDown"></param>
         public void Roll(int PinsKnockedDown)
         {
-            //PlayerRoll++;
+            PlayerRoll++;
 
-            //if(PinsKnockedDown == 10)
-            //{
-            //    IsStrike = true;
-            //    IsframeFinished = true;
-            //}
+            if (PinsKnockedDown == 10)
+            {
+                IsStrike = true;
+                IsFrameFinished = true;
+                Frame++;
+            }
 
-            //RunningScore = RunningScore + PinsKnockedDown;
+            RunningScore = RunningScore + PinsKnockedDown;
             
-            //if (PlayerRoll == 2)
-            //{
-            //    Frame++;
-            //}       
         }
     }
 }

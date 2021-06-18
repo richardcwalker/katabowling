@@ -31,14 +31,15 @@ namespace BowlingScorerTests
         {
         }
 
-        //Strike on first roll
+        // Strike on first roll
+        // IsStrike and IsFrameFinished will be true.
         [Test]
         public void PlayerScoresStrikeFirstRoll()
         {
             Game _newGame = new Game();
             //First Roll
             _newGame.Roll(10);
-            Assert.IsTrue(_newGame.IsStrike);
+            Assert.That(_newGame.IsStrike && _newGame.IsFrameFinished);
         }
     }
 }
