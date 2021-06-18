@@ -5,7 +5,6 @@ namespace BowlingScorerTests
 {
     public class BowlingScoringTests
     {
-        public Game _newGameForScoringTestCase;
         /// <summary>
         // The game consists of 10 frames.
 
@@ -29,7 +28,7 @@ namespace BowlingScorerTests
         [SetUp]
         public void Setup()
         {
-            _newGameForScoringTestCase = new Game();
+            
         }
 
         // Strike on first roll
@@ -73,19 +72,56 @@ namespace BowlingScorerTests
         [Test]
         public void GameScoreNoStrikeOrSpare()
         {
-            _newGameForScoringTestCase.Roll(1);
-            _newGameForScoringTestCase.Roll(2);
-            Assert.IsTrue(_newGameForScoringTestCase.Score() == 3 
-                && _newGameForScoringTestCase.IsFrameFinished 
-                && _newGameForScoringTestCase.FrameNumber == 2);
+            Game _newGame = new Game();
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            Assert.IsTrue(_newGame.Score() == 3 
+                && _newGame.IsFrameFinished 
+                && _newGame.FrameNumber == 2);
         }
 
         // Game Score Test Case(no spares or bonuses for now) just two frames
         [Test]
         public void FrameNotFinishedLogicTest()
         {
-            _newGameForScoringTestCase.Roll(1);
-            Assert.IsFalse(_newGameForScoringTestCase.IsFrameFinished);
+            Game _newGame = new Game();
+            _newGame.Roll(1);
+            Assert.IsFalse(_newGame.IsFrameFinished);
+        }
+
+        // Strike bonus tally
+        // The bonus for that frame is the value of the next two rolls.
+        [Test]
+        public void CheckNextFrameCount()
+        {
+            Game _newGame = new Game();
+            //First Frame
+            _newGame.Roll(2);
+            _newGame.Roll(4);
+            Assert.IsTrue(_newGame.FrameNumber == 2);
+
+        }
+        // Spare bonus tally
+        // The bonus for that frame is the number of pins knocked down by the next roll.
+        // So
+        // Frame 1
+        // Roll 1 (first frame = strike so score = 10)
+        // Frame 2
+        // Roll 1 = 5
+        // Roll 2 = 4
+        // So bonus = 9
+        // Total Score so far is 28
+        // 10 for frame 1 strike
+        // plus 9 for this frame score
+        // plus bonus value of this frames two rolls (again 9))
+        [Test]
+        public void BonusForSpare()
+        {
+        Game _newGame = new Game();
+        _newGame.Roll(10);
+        _newGame.Roll(5);
+        _newGame.Roll(4);
+         Assert.That(_newGame.Score() == 28);
         }
     }
 }
