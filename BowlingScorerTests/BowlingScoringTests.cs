@@ -3,8 +3,9 @@ using NUnit.Framework;
 
 namespace BowlingScorerTests
 {
-    public class BowlingScoring
+    public class BowlingScoringTests
     {
+        public Game _newGameForScoringTestCase;
         /// <summary>
         // The game consists of 10 frames.
 
@@ -28,6 +29,7 @@ namespace BowlingScorerTests
         [SetUp]
         public void Setup()
         {
+            _newGameForScoringTestCase = new Game();
         }
 
         // Strike on first roll
@@ -50,7 +52,7 @@ namespace BowlingScorerTests
             _newGame.Roll(4);
             //First Roll
             _newGame.Roll(6);
-            Assert.True(_newGame.IsSpare);
+            Assert.True(_newGame.IsSpare && _newGame.IsFrameFinished);
         }
 
         // No Spare (two rolls knocks down <10 pins)
@@ -60,9 +62,30 @@ namespace BowlingScorerTests
             Game _newGame = new Game();
             //First Roll
             _newGame.Roll(3);
-            //First Roll
+            //Second Roll
             _newGame.Roll(6);
-            Assert.IsFalse(_newGame.IsSpare);
+            Assert.IsFalse(_newGame.IsSpare && _newGame.IsFrameFinished);
+        }
+
+        // Game Score Test Case(no spares or bonuses for now) just two frames
+        //[TestCase(1, ExpectedResult = 1)]
+        //[TestCase(2, ExpectedResult = 3)]
+        [Test]
+        public void GameScoreNoStrikeOrSpare()
+        {
+            _newGameForScoringTestCase.Roll(1);
+            _newGameForScoringTestCase.Roll(2);
+            Assert.IsTrue(_newGameForScoringTestCase.Score() == 3 
+                && _newGameForScoringTestCase.IsFrameFinished 
+                && _newGameForScoringTestCase.FrameNumber == 2);
+        }
+
+        // Game Score Test Case(no spares or bonuses for now) just two frames
+        [Test]
+        public void FrameNotFinishedLogicTest()
+        {
+            _newGameForScoringTestCase.Roll(1);
+            Assert.IsFalse(_newGameForScoringTestCase.IsFrameFinished);
         }
     }
 }

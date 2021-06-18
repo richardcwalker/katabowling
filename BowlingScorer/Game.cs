@@ -8,7 +8,7 @@ namespace BowlingScorer
     {
         private int GameTotalScore;
         private int FrameScore = 0;
-        public int Frame = 0;
+        public int FrameNumber = 0;
         public int PlayerRoll = 0;
         public int Bonus = 0;
         public bool IsFrameFinished = false;
@@ -31,7 +31,6 @@ namespace BowlingScorer
         public void Roll(int pinsKnockedDown)
         {
             PlayerRoll++;
-            Frame++;
             FrameTally(pinsKnockedDown);
             ScoreTally(pinsKnockedDown);
         }
@@ -40,16 +39,22 @@ namespace BowlingScorer
         {
             CheckForStrike(pinsKnockedDown);
             //If second roll check for spare (all 10 pins down in two rolls)
-            if(!IsStrike && PlayerRoll == 2)
+            FrameNumber++;
+            if (PlayerRoll == 2)
             {
-                CheckForSpare(pinsKnockedDown);
+                if(!IsStrike)
+                {
+                    CheckForSpare(pinsKnockedDown);
+                }
+                IsFrameFinished = true;
             }
+            AddFrameTally(IsStrike, IsSpare);
         }
 
         private void ScoreTally(int PinsKnockedDown)
         {
             FrameScore = FrameScore + PinsKnockedDown;
-            GameTotalScore = GameTotalScore + FrameScore;
+            GameTotalScore = GameTotalScore + PinsKnockedDown;
         }
 
         private void CheckForSpare(int pinsKnockedDown)
@@ -63,7 +68,7 @@ namespace BowlingScorer
                     IsSpare = false;
                     break;
             }
-            AddFrameTally(IsStrike, IsSpare);
+            
         }
 
         private void CheckForStrike(int PinsKnockedDown)
@@ -72,7 +77,6 @@ namespace BowlingScorer
             {
                 IsStrike = true;
                 IsFrameFinished = true;
-                AddFrameTally(IsStrike, IsSpare);
             }
         }
 
@@ -80,10 +84,11 @@ namespace BowlingScorer
         {
             FramesPlayed.Add(new FramesPlayed
             {
-                FrameNumber = Frame,
+                FrameNumber = FrameNumber,
                 FrameScore = FrameScore,
                 WasSpare = false,
-                WasStrike = true
+                WasStrike = true,
+                IsFrameFinished = IsFrameFinished
             });
 
         }
