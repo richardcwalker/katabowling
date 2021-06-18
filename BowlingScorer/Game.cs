@@ -21,19 +21,19 @@ namespace BowlingScorer
         }
         public int Score()
         {
-            return FrameScore;
+            return GameTotalScore;
         }
         /// <summary>
         /// Passes in the number of pins knocked down when a roll is made 
         /// by a player.
         /// </summary>
         /// <param name="PinsKnockedDown"></param>
-        public void Roll(int PinsKnockedDown)
+        public void Roll(int pinsKnockedDown)
         {
             PlayerRoll++;
             Frame++;
-            FrameTally(PinsKnockedDown);
-            
+            FrameTally(pinsKnockedDown);
+            ScoreTally(pinsKnockedDown);
         }
 
         private void FrameTally(int pinsKnockedDown)
@@ -44,8 +44,6 @@ namespace BowlingScorer
             {
                 CheckForSpare(pinsKnockedDown);
             }
-            ScoreTally(pinsKnockedDown);
-            
         }
 
         private void ScoreTally(int PinsKnockedDown)
