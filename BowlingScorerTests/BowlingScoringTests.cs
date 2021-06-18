@@ -134,42 +134,66 @@ namespace BowlingScorerTests
             Assert.That(_newGame.Score() == 20);
         }
 
-        // No spares or strikes
+        // Game with a spare in the middle
         [Test]
-        public void TenFramesNoStrikesOrSpares()
+        public void TenFramesBonusForSpare()
         {
             Game _newGame = new Game();
-            //Spare
             _newGame.Roll(1);
             _newGame.Roll(2);
-            //Next frame
-            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(3); 
             _newGame.Roll(4);
             //Spare
+            _newGame.Roll(5);
+            _newGame.Roll(5);
+            _newGame.Roll(4); // Bonus to add
+            _newGame.Roll(2); 
             _newGame.Roll(1);
             _newGame.Roll(2);
-            //Next frame
-            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(3); 
             _newGame.Roll(4);
-            //Spare
             _newGame.Roll(1);
             _newGame.Roll(2);
-            //Next frame
-            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(3); 
             _newGame.Roll(4);
-            //Spare
             _newGame.Roll(1);
             _newGame.Roll(2);
-            //Next frame
-            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(3); 
             _newGame.Roll(4);
-            //Spare
+            Assert.That(_newGame.Score() == 60);
+        }
+
+        // Game with a spare in the middle
+        [Test]
+        public void TenFramesBonusForStrike()
+        {
+            Game _newGame = new Game();
             _newGame.Roll(1);
             _newGame.Roll(2);
-            //Next frame
-            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(3);
             _newGame.Roll(4);
-            Assert.That(_newGame.Score() == 50);
+            //Strike
+            _newGame.Roll(10);
+            //Next frame to add the scores for the rolls
+            _newGame.Roll(6); 
+            _newGame.Roll(2); 
+            //...
+            _newGame.Roll(5);
+            _newGame.Roll(5);
+            _newGame.Roll(2);
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            _newGame.Roll(3);
+            _newGame.Roll(4);
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            _newGame.Roll(3);
+            _newGame.Roll(4);
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            _newGame.Roll(3);
+            _newGame.Roll(4);
+            Assert.That(_newGame.Score() == 88);
         }
     }
 }
