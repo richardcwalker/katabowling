@@ -8,7 +8,7 @@ namespace BowlingScorer
     {
         private int GameTotalScore;
         private int FrameScore = 0;
-        public int FrameNumber = 0;
+        public int ThisFrameNumber = 1;
         public int PlayerRoll = 0;
         public int Bonus = 0;
         public bool IsFrameFinished = false;
@@ -33,6 +33,10 @@ namespace BowlingScorer
             try
             {
                 PlayerRoll++;
+                if (PlayerRoll == 1)
+                {
+                    IsFrameFinished = false;
+                }
                 ScoreTally(pinsKnockedDown);
                 FrameTally(pinsKnockedDown);
             }
@@ -57,14 +61,34 @@ namespace BowlingScorer
                 }
                 //2nd roll so frame complete
                 IsFrameFinished = true;
+                AddFrameTally(IsStrike, IsSpare);
+                ThisFrameNumber++;
+
+                PlayerRoll = 0;
+                FrameScore = 0;
             }
-            AddFrameTally(IsStrike, IsSpare);
         }
 
         private void ScoreTally(int PinsKnockedDown)
         {
             FrameScore = FrameScore + PinsKnockedDown;
             GameTotalScore = GameTotalScore + PinsKnockedDown;
+
+            //Check previous frame 
+
+            if (FramesPlayed.Count > 0 && PlayerRoll == 1)
+            {
+                //Was this a spare
+                var lastFrame = FramesPlayed.Find(f => f.FrameNumber == ThisFrameNumber - 1);
+                //Add first roll score to bonus
+                if (lastFrame.WasSpare)
+                {
+                    Bonus = Bonus  + PinsKnockedDown;
+                    GameTotalScore = GameTotalScore + Bonus;
+                }
+
+            }
+            //Add to score
         }
 
         private void CheckForSpare()
@@ -94,8 +118,9 @@ namespace BowlingScorer
         {
             FramesPlayed.Add(new FramesPlayed
             {
-                FrameNumber = FrameNumber++,
+                FrameNumber = ThisFrameNumber,
                 FrameScore = FrameScore,
+                FrameBonus = Bonus,
                 WasSpare = IsSpare,
                 WasStrike = IsStrike,
                 IsFrameFinished = IsFrameFinished

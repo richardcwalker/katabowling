@@ -28,7 +28,7 @@ namespace BowlingScorerTests
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
         // Strike on first roll
@@ -75,9 +75,9 @@ namespace BowlingScorerTests
             Game _newGame = new Game();
             _newGame.Roll(1);
             _newGame.Roll(2);
-            Assert.IsTrue(_newGame.Score() == 3 
-                && _newGame.IsFrameFinished 
-                && _newGame.FrameNumber == 2);
+            Assert.IsTrue(_newGame.Score() == 3
+                && _newGame.IsFrameFinished
+                && _newGame.ThisFrameNumber == 2);
         }
 
         // Game Score Test Case(no spares or bonuses for now) just two frames
@@ -98,30 +98,38 @@ namespace BowlingScorerTests
             //First Frame
             _newGame.Roll(2);
             _newGame.Roll(4);
-            Assert.IsTrue(_newGame.FrameNumber == 2);
+            Assert.IsTrue(_newGame.ThisFrameNumber == 2);
 
         }
         // Spare bonus tally
         // The bonus for that frame is the number of pins knocked down by the next roll.
-        // So
-        // Frame 1
-        // Roll 1 (first frame = strike so score = 10)
-        // Frame 2
-        // Roll 1 = 5
-        // Roll 2 = 4
-        // So bonus = 9
-        // Total Score so far is 28
-        // 10 for frame 1 strike
-        // plus 9 for this frame score
-        // plus bonus value of this frames two rolls (again 9))
+
+        [Test]
+        public void CheckFrameFinishedFlagResetsAfterTwoRolls()
+        {
+            Game _newGame = new Game();
+            //Frame 1
+            _newGame.Roll(5);
+            _newGame.Roll(5);
+            //Frame 2
+            _newGame.Roll(4); // Next frame
+            Assert.IsFalse(_newGame.IsFrameFinished);
+        }
+
         [Test]
         public void BonusForSpare()
         {
-        Game _newGame = new Game();
-        _newGame.Roll(10);
-        _newGame.Roll(5);
-        _newGame.Roll(4);
-         Assert.That(_newGame.Score() == 28);
+            Game _newGame = new Game();
+            //Spare
+            _newGame.Roll(5);
+            _newGame.Roll(5);
+            //Next frame
+            _newGame.Roll(4); // Bonus to add
+            _newGame.Roll(2);
+            //// Bonus is 4 from the first roll of second frame
+            //// so score should be :
+            //// 10(spare from frame 1) + 6(frame 2 total) + (bonus first roll)4 = 20
+            Assert.That(_newGame.Score() == 20);
         }
     }
 }

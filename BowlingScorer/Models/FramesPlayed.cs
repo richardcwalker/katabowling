@@ -11,5 +11,6 @@ namespace BowlingScorer.Models
         public bool WasStrike { get; set; }
         public bool WasSpare { get; set; }
         public bool IsFrameFinished { get; internal set; }
+        public int FrameBonus { get; internal set; }
     }
 }
