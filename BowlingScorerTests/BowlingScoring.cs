@@ -18,7 +18,6 @@ namespace BowlingScorerTests
         //
         // A strike is when the player knocks down all 10 pins on his first roll.
         // The frame is then completed with a single roll.
-        //
         // The bonus for that frame is the value of the next two rolls.
         //
         // In the tenth frame a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame.
@@ -40,6 +39,30 @@ namespace BowlingScorerTests
             //First Roll
             _newGame.Roll(10);
             Assert.That(_newGame.IsStrike && _newGame.IsFrameFinished);
+        }
+
+        // Spare (two rolls knocks down 10 pins)
+        [Test]
+        public void PlayerScoresSpare()
+        {
+            Game _newGame = new Game();
+            //First Roll
+            _newGame.Roll(4);
+            //First Roll
+            _newGame.Roll(6);
+            Assert.True(_newGame.IsSpare);
+        }
+
+        // No Spare (two rolls knocks down <10 pins)
+        [Test]
+        public void PlayerWontScoreSpare()
+        {
+            Game _newGame = new Game();
+            //First Roll
+            _newGame.Roll(3);
+            //First Roll
+            _newGame.Roll(6);
+            Assert.IsFalse(_newGame.IsSpare);
         }
     }
 }
