@@ -52,6 +52,10 @@ namespace BowlingScorer
             if (PlayerRoll == 1)
             {
                 CheckForStrike(pinsKnockedDown);
+                if(IsStrike)
+                {
+                    FinishFrame();
+                }
             }
             else
             {
@@ -60,13 +64,18 @@ namespace BowlingScorer
                     CheckForSpare();
                 }
                 //2nd roll so frame complete
-                IsFrameFinished = true;
-                AddFrameTally(IsStrike, IsSpare);
-                ThisFrameNumber++;
-
-                PlayerRoll = 0;
-                FrameScore = 0;
+                FinishFrame();
             }
+
+        }
+
+        private void FinishFrame()
+        {
+            IsFrameFinished = true;
+            AddFrameTally(IsStrike, IsSpare);
+            PlayerRoll = 0;
+            FrameScore = 0;
+            ThisFrameNumber++;
         }
 
         private void ScoreTally(int PinsKnockedDown)
@@ -76,19 +85,26 @@ namespace BowlingScorer
 
             //Check previous frame 
 
-            if (FramesPlayed.Count > 0 && PlayerRoll == 1)
+            if (FramesPlayed.Count > 0)
             {
-                //Was this a spare
+                //Was last frame a spare
                 var lastFrame = FramesPlayed.Find(f => f.FrameNumber == ThisFrameNumber - 1);
-                //Add first roll score to bonus
-                if (lastFrame.WasSpare)
+
+                //Bonus for spare is to add first roll score to bonus
+                if (lastFrame.WasSpare && PlayerRoll == 1)
                 {
                     Bonus = Bonus  + PinsKnockedDown;
                     GameTotalScore = GameTotalScore + Bonus;
                 }
 
+                //Bonus for strike is the last two balls rolled i.e, frame score
+                if (lastFrame.WasStrike && PlayerRoll == 2)
+                {
+                    Bonus = Bonus + FrameScore;
+                    GameTotalScore = GameTotalScore + Bonus;
+                }
+
             }
-            //Add to score
         }
 
         private void CheckForSpare()
@@ -107,10 +123,13 @@ namespace BowlingScorer
 
         private void CheckForStrike(int PinsKnockedDown)
         {
+            IsStrike = false;
             if (PinsKnockedDown == 10)
             {
                 IsStrike = true;
                 IsFrameFinished = true;
+                PlayerRoll = 0;
+                FrameScore = 0;
             }
         }
 
