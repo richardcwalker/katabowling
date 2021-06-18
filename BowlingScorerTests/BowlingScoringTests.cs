@@ -133,5 +133,43 @@ namespace BowlingScorerTests
             //// 10(spare from frame 1) + 6(frame 2 total) + (bonus first roll in this frame)4 = 20
             Assert.That(_newGame.Score() == 20);
         }
+
+        // No spares or strikes
+        [Test]
+        public void TenFramesNoStrikesOrSpares()
+        {
+            Game _newGame = new Game();
+            //Spare
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            //Next frame
+            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(4);
+            //Spare
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            //Next frame
+            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(4);
+            //Spare
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            //Next frame
+            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(4);
+            //Spare
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            //Next frame
+            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(4);
+            //Spare
+            _newGame.Roll(1);
+            _newGame.Roll(2);
+            //Next frame
+            _newGame.Roll(3); // Bonus to add
+            _newGame.Roll(4);
+            Assert.That(_newGame.Score() == 50);
+        }
     }
 }
