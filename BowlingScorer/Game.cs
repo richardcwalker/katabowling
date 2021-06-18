@@ -2,7 +2,7 @@
 
 namespace BowlingScorer
 {
-    public class Game
+    public class Game : IGame
     {
         private int RunningScore;
         public int Frame = 0;
@@ -22,16 +22,22 @@ namespace BowlingScorer
         public void Roll(int PinsKnockedDown)
         {
             PlayerRoll++;
+            ScoringTally(PinsKnockedDown);
+        }
 
+        private void ScoringTally(int PinsKnockedDown)
+        {
+            CheckForStrike(PinsKnockedDown);
+            RunningScore = RunningScore + PinsKnockedDown;
+        }
+
+        private void CheckForStrike(int PinsKnockedDown)
+        {
             if (PinsKnockedDown == 10)
             {
                 IsStrike = true;
                 IsFrameFinished = true;
-                Frame++;
             }
-
-            RunningScore = RunningScore + PinsKnockedDown;
-            
         }
     }
 }
